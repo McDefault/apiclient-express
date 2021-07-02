@@ -1,0 +1,23 @@
+{
+  "name": "maxminded-express-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo \"Error: no postinstall specified\" && exit 1"
+  },
+  "author": "McDefault",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "latest",
+    "express": "^4.16.4",
+    "express-ws": "^4.0.0",
+    "moment": "latest",
+    "node-fetch": "^2.6.1",
+    "pino": "^6.11.3",
+    "pug": "^2.0.3"
+  }
+}
