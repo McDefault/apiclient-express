@@ -12,18 +12,6 @@ router
 
     })
     .post('/', async (req, res) => {
-        const config = require('./../../config');
-        const Hasher = require('./../modules/Hasher');
-        const secret = config.token;
-        const signature = Buffer.from(req.headers["x-patreon-signature"], "hex");
-
-
-        const Hash = Hasher.ComputeHash(secret, req.body);
-
-        console.log(signature);
-        console.log(Hash);
-
-
         console.log(req.body.data.attributes.last_charge_status);
         if (req.body.data.attributes.last_charge_status !== "Paid") {
             //todo guild premium calculation
@@ -43,7 +31,7 @@ router
             res.end();
             return;
         }
-
+m
         const oldModel = await pledgeController.getOldModel(boostModel);
 
         //check if boost already exists

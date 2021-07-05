@@ -4,28 +4,31 @@ const Logger = require('./../modules/Logger');
 
 module.exports = (req, res, next) => {
 
-    try {
-        const secret = "aGa_Wt6yfrWosN3Qu8l5vLpc4gjRsi6dhB9lnFUBKrRJAman_OtGTUqQK7vr7y1t";
+    // try {
+        const secret = config.token;
         const signature = req.headers["x-patreon-signature"];
+        const payload = req.body;
 
-        const verified = Hasher.HashIsValid(secret, req.body, signature);
+        const Hash = Hasher.ComputeSimpleHash(secret, payload);
 
-        console.log(Buffer.from(signature, "hex"));
         console.log(signature);
-        console.log(Hasher.ComputeSimpleHash(secret, req.body));
+        console.log(Hash);
+
+        const verified = (signature === Hash);
 
         if(!verified) {
             console.log("Unauthorized");
-            res.status(401);
-            res.end();
-            return;
+            // res.status(401);
+            // res.end();
+            // return;
         }
+
         next();
 
-    } catch (e) {
-        Logger.error(e);
-        console.log("Unauthorized");
-        res.status(401);
-        res.end();
-    }
+    // } catch (e) {
+    //     console.error(e);
+    //     console.log("Unauthorized by error");
+    //     res.status(401);
+    //     res.end();
+    // }
 };
