@@ -86,3 +86,6 @@ $RECYCLE.BIN/
 resources/client.sqlite
 resources/permissions.json
 resources/client.json
+
+nodemon.json
+.env
